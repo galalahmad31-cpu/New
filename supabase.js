@@ -4,8 +4,8 @@
  * NEVER put the Supabase service_role key in frontend code.
  */
 (function () {
-  const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+  const SUPABASE_URL = 'https://airycyfsyxkbfhpgkrbw.supabase.co/rest/v1/';
+  const SUPABASE_ANON_KEY = 'sb_publishable_PYNMFT4h02icnwG8bXIodQ_KnQjfL3B';
 
   if (!window.supabase) throw new Error('Supabase JS library was not loaded.');
 
