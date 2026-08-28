@@ -2,8 +2,8 @@
 // Supabase
 // ==============================
 
-const supabaseUrl = "https://airycyfsyxkbfhpgkrbw.supabase.co";
-const supabaseKey = "sb_publishable_PYNMFT4h02icnwG8bXIodQ_KnQjfL3B";
+const supabaseUrl = "https://whiwuwqgocsdobposkyz.supabase.co";
+const supabaseKey = "sb_publishable_wy9sTXANsf04XMlupTQBog_hI7Meucz";
 
 const supabaseClient = window.supabase.createClient(
   supabaseUrl,
