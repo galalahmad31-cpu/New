@@ -46,16 +46,6 @@ registerForm.addEventListener("submit", async (event) => {
   }
 
 
-  // Create profile
-  const { error: profileError } =
-    await supabaseClient
-      .from("profiles")
-      .insert({
-        id: data.user.id,
-        full_name: fullName
-      });
-
-
   if (profileError) {
     document.getElementById("message").textContent =
       profileError.message;
