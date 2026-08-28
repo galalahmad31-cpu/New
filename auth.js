@@ -101,3 +101,108 @@ loginForm.addEventListener("submit", async (event) => {
 
   window.location.href = "dashboard.html";
 });
+// ==============================
+// Current User
+// ==============================
+
+async function getCurrentUser() {
+
+  const {
+    data: { user },
+    error
+  } = await supabaseClient.auth.getUser();
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  return user;
+}
+
+
+// ==============================
+// Require Login
+// ==============================
+
+async function requireLogin() {
+
+  const user = await getCurrentUser();
+
+  if (!user) {
+    window.location.href = "index.html";
+    return null;
+  }
+
+  return user;
+}
+
+
+// ==============================
+// Load Profile
+// ==============================
+
+async function loadProfile(user) {
+
+  const { data, error } =
+    await supabaseClient
+      .from("profiles")
+      .select("full_name, role")
+      .eq("id", user.id)
+      .single();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const name = document.getElementById("userName");
+  const email = document.getElementById("userEmail");
+
+  if (name) {
+    name.textContent = `Name: ${data.full_name}`;
+  }
+
+  if (email) {
+    email.textContent = `Email: ${user.email}`;
+  }
+}
+
+
+// ==============================
+// Logout
+// ==============================
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  window.location.href = "index.html";
+}
+
+
+// ==============================
+// Dashboard
+// ==============================
+
+async function initDashboard() {
+
+  const user = await requireLogin();
+
+  if (!user) return;
+
+  await loadProfile(user);
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", logout);
+  }
+}
+
+
+// Run only on Dashboard
+if (document.getElementById("logoutBtn")) {
+  initDashboard();
+}
