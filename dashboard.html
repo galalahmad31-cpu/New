@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="dashboard_title">Dashboard</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header" id="app-header"></header>
+
+  <!-- Navbar -->
+  <nav class="app-nav" id="app-nav"></nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1 class="page-title" data-i18n="dashboard_title">Dashboard</h1>
+    <p class="page-subtitle" data-i18n="dashboard_subtitle">Overview of your clinical practice</p>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+        <div>
+          <div class="stat-value" id="stat-total">0</div>
+          <div class="stat-label" data-i18n="stat_total_patients">Total Patients</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div>
+        <div>
+          <div class="stat-value" id="stat-active">0</div>
+          <div class="stat-label" data-i18n="stat_active_patients">Active Patients</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon orange"><i class="fa-solid fa-calendar-check"></i></div>
+        <div>
+          <div class="stat-value" id="stat-followups">0</div>
+          <div class="stat-label" data-i18n="stat_follow_ups_week">Follow-ups This Week</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon red"><i class="fa-solid fa-coins"></i></div>
+        <div>
+          <div class="stat-value" id="stat-revenue">0</div>
+          <div class="stat-label" data-i18n="stat_revenue_month">Revenue This Month</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two columns -->
+    <div class="dashboard-grid">
+      <!-- Recent Patients -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title" data-i18n="recent_patients">Recent Patients</h3>
+          <a href="patients.html" class="btn btn-sm btn-secondary" data-i18n="view_all">View All</a>
+        </div>
+        <div class="card-body" id="recent-patients-list">
+          <div class="empty-state">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p data-i18n="loading">Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Follow-ups -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title" data-i18n="upcoming_followups">Upcoming Follow-ups</h3>
+          <a href="notifications.html" class="btn btn-sm btn-secondary" data-i18n="view_all">View All</a>
+        </div>
+        <div class="card-body" id="upcoming-followups-list">
+          <div class="empty-state">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p data-i18n="loading">Loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/layout.js"></script>
+
+  <!-- Page JS -->
+  <script src="js/pages/dashboard.js"></script>
+</body>
+</html>
